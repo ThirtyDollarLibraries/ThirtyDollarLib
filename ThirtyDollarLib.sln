@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThirtyDollarLib", "ThirtyDollarLib\ThirtyDollarLib.csproj", "{576967C7-A5DD-49A4-940A-1450E62289DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThirtyDollarLib.Tests", "ThirtyDollarLib.Tests\ThirtyDollarLib.Tests.csproj", "{AD2BF2F7-DE17-46C0-8B6C-5FD37C1E672E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{576967C7-A5DD-49A4-940A-1450E62289DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{576967C7-A5DD-49A4-940A-1450E62289DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{576967C7-A5DD-49A4-940A-1450E62289DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD2BF2F7-DE17-46C0-8B6C-5FD37C1E672E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD2BF2F7-DE17-46C0-8B6C-5FD37C1E672E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD2BF2F7-DE17-46C0-8B6C-5FD37C1E672E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD2BF2F7-DE17-46C0-8B6C-5FD37C1E672E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
