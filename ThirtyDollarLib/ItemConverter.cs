@@ -35,7 +35,21 @@
                 ItemType.WindowsXPError => "🚫",
                 ItemType.SamsungAlarm => "🌄",
                 ItemType.Bonk => "🏏",
-                _ => "unknown"
+                ItemType.Censored => "🤬",
+                ItemType.Alarm => "🚨",
+                ItemType.Buzzer => "buzzer",
+                ItemType.Alerted => "❗",
+                ItemType.MrKrabs => "🦀",
+                ItemType.E => "e",
+                ItemType.Eight => "eight",
+                ItemType.AyoThePizzaHere => "🍕",
+                ItemType.Honk => "🦢",
+                ItemType.GunLoad => "gun",
+                ItemType.Hitmarker => "hitmarker",
+                ItemType.Noice => "👌",
+                ItemType.WhatsApp => "whatsapp",
+                ItemType.Gnomed => "gnome",
+                _ => "_pause"
             };
         }
 
