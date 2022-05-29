@@ -4,98 +4,18 @@
     {
         public static string ConvertItem(ItemType item)
         {
-            // colon why did you add so much sounds i had to type for hours straight
-            return item switch
-            {
-                // controls
-                ItemType.Speed => "!speed",
-                ItemType.Volume => "!volume",
-                ItemType.Stop => "!stop",
-                ItemType.LoopMany => "!loopmany",
-                ItemType.LoopTarget => "!looptarget",
-                ItemType.Loop => "!loop",
-                ItemType.Cut => "!cut",
-                ItemType.Combine => "!combine",
-                ItemType.Jump => "!jump",
-                ItemType.Target => "!target",
-                ItemType.Flash => "!flash",
-                ItemType.StartPos => "!startpos",
-                ItemType.Pause => "_pause",
-                // sounds
-                ItemType.Boom => "boom",
-                ItemType.Bruh => "bruh",
-                ItemType.TacoBell => "bong",
-                ItemType.Skull => "💀",
-                ItemType.Clap => "👏",
-                ItemType.WhatTheDogDoin => "🐶",
-                ItemType.BogosBinted => "👽",
-                ItemType.NotificationBell => "🔔",
-                ItemType.Boing => "💢",
-                ItemType.Fard => "💨",
-                ItemType.WindowsXPError => "🚫",
-                ItemType.SamsungAlarm => "🌄",
-                ItemType.Bonk => "🏏",
-                ItemType.Censored => "🤬",
-                ItemType.Alarm => "🚨",
-                ItemType.Buzzer => "buzzer",
-                ItemType.Alerted => "❗",
-                ItemType.MrKrabs => "🦀",
-                ItemType.E => "e",
-                ItemType.Eight => "eight",
-                ItemType.AyoThePizzaHere => "🍕",
-                ItemType.Honk => "🦢",
-                ItemType.GunLoad => "gun",
-                ItemType.Hitmarker => "hitmarker",
-                ItemType.Noice => "👌",
-                ItemType.WhatsApp => "whatsapp",
-                ItemType.Gnomed => "gnome",
-                ItemType.RecordScratch => "💿",
-                ItemType.Party => "🎉",
-                ItemType.Pan => "pan",
-                ItemType.Slip => "slip",
-                ItemType.WhipCrack => "whipcrack",
-                ItemType.Explosion => "explosion",
-                ItemType.Oof => "oof",
-                ItemType.Subaluwa => "subaluwa",
-                ItemType.Necoarc => "necoarc",
-                ItemType.Yoda => "yoda",
-                ItemType.Hehehehaw => "hehehehaw",
-                ItemType.GRANDDAD => "granddad",
-                ItemType.Morshu => "morshu",
-                ItemType.StopPosting => "stopposting",
-                ItemType.NinePlusTen => "21",
-                ItemType.GangnamStyle => "op",
-                ItemType.SLAM => "SLAM",
-                ItemType.Americano => "americano",
-                ItemType.SMW_Coin => "smw_coin",
-                ItemType.SMW_1Up => "smw_1up",
-                ItemType.SMW_SpinJump => "smw_spinjump",
-                ItemType.SMW_Stomp2 => "smw_stomp2",
+            string referenceSeq = "!speed|!volume|!stop|!loopmany|!loop|!looptarget|!cut|!combine|!jump|!target|!flash|!startpos|_pause|boom|bruh|bong|💀|👏|🐶|👽|🔔|💢|💨|🚫|🌄@0|🏏|🤬|🚨|buzzer|❗|🦀|e|eight|🍕|🦢|gun|hitmarker|👌|whatsapp|gnome|💿|🎉|🎻|pan|slip|whipcrack|explosion|oof|subaluwa|necoarc|yoda|hehehehaw|granddad|morshu|stopposting|21|op|SLAM|americano|smw_coin|smw_1up|smw_spinjump|smw_stomp2|smw_kick|smw_stomp|yahoo|sm64_hurt|bup|thwomp|sm64_painting|smm_scream|mariopaint_mario|mariopaint_luigi|smw_yoshi|mariopaint_star|mariopaint_flower|mariopaint_gameboy|mariopaint_dog|mariopaint_cat|mariopaint_swan|mariopaint_baby|mariopaint_plane|mariopaint_car|shaker|🥁|hammer|🪘|sidestick|ride2|buttonpop|skipshot|otto_on|otto_off|otto_happy|otto_stress|tab_sounds|tab_rows|tab_actions|tab_decorations|tab_rooms|preecho|tonk|rdmistake|samurai|adofaikick|midspin|adofaicymbal|cowbell|karateman_throw|karateman_offbeat|karateman_hit|karateman_bulb|ook|choruskid|builttoscale|perfectfail|🌟|hoenn|🎺|fnf_left|fnf_down|fnf_up|fnf_right|fnf_death|megalovania|🦴|undertale_encounter|undertale_hit|undertale_crack|toby|gaster|gdcrash|gdcrash_orbs|gd_coin|gd_orbs|gd_diamonds|bwomp|isaac_hurt|isaac_dead|isaac_mantle|terraria_star|terraria_pot|terraria_reforge|BABA|YOU|DEFEAT|celeste_dash|celeste_death|celeste_spring|celeste_diamond|ultrainstinct|flipnote|amongus|amongdrip|amogus|noteblock_harp|noteblock_bass|noteblock_snare|noteblock_click|noteblock_bell|noteblock_chime|noteblock_banjo|noteblock_pling|noteblock_xylophone|noteblock_bit|minecraft_explosion|minecraft_bell";
+            string[] instruments = referenceSeq.Split('|');
 
-                _ => "_pause"
-            };
+            return instruments[(int)item];
         }
 
         public static ItemType FromItem(string item)
         {
-            return item switch
-            {
-                // controls
-                "!speed" => ItemType.Speed,
-                "!volume" => ItemType.Volume,
-                "!stop" => ItemType.Stop,
-                "!loopmany" => ItemType.LoopMany,
-                "!looptarget" => ItemType.LoopTarget,
-                "!loop" => ItemType.Loop,
-                "!cut" => ItemType.Cut,
-                "!combine" => ItemType.Combine,
-                "!jump" => ItemType.Jump,
-                "!target" => ItemType.Target,
-                "!flash" => ItemType.Flash,
-                "!startpos" => ItemType.StartPos,
-                "_pause" => ItemType.Pause,
-                _ => ItemType.Boom
-            };
+            string referenceSeq = "!speed|!volume|!stop|!loopmany|!loop|!looptarget|!cut|!combine|!jump|!target|!flash|!startpos|_pause|boom|bruh|bong|💀|👏|🐶|👽|🔔|💢|💨|🚫|🌄@0|🏏|🤬|🚨|buzzer|❗|🦀|e|eight|🍕|🦢|gun|hitmarker|👌|whatsapp|gnome|💿|🎉|🎻|pan|slip|whipcrack|explosion|oof|subaluwa|necoarc|yoda|hehehehaw|granddad|morshu|stopposting|21|op|SLAM|americano|smw_coin|smw_1up|smw_spinjump|smw_stomp2|smw_kick|smw_stomp|yahoo|sm64_hurt|bup|thwomp|sm64_painting|smm_scream|mariopaint_mario|mariopaint_luigi|smw_yoshi|mariopaint_star|mariopaint_flower|mariopaint_gameboy|mariopaint_dog|mariopaint_cat|mariopaint_swan|mariopaint_baby|mariopaint_plane|mariopaint_car|shaker|🥁|hammer|🪘|sidestick|ride2|buttonpop|skipshot|otto_on|otto_off|otto_happy|otto_stress|tab_sounds|tab_rows|tab_actions|tab_decorations|tab_rooms|preecho|tonk|rdmistake|samurai|adofaikick|midspin|adofaicymbal|cowbell|karateman_throw|karateman_offbeat|karateman_hit|karateman_bulb|ook|choruskid|builttoscale|perfectfail|🌟|hoenn|🎺|fnf_left|fnf_down|fnf_up|fnf_right|fnf_death|megalovania|🦴|undertale_encounter|undertale_hit|undertale_crack|toby|gaster|gdcrash|gdcrash_orbs|gd_coin|gd_orbs|gd_diamonds|bwomp|isaac_hurt|isaac_dead|isaac_mantle|terraria_star|terraria_pot|terraria_reforge|BABA|YOU|DEFEAT|celeste_dash|celeste_death|celeste_spring|celeste_diamond|ultrainstinct|flipnote|amongus|amongdrip|amogus|noteblock_harp|noteblock_bass|noteblock_snare|noteblock_click|noteblock_bell|noteblock_chime|noteblock_banjo|noteblock_pling|noteblock_xylophone|noteblock_bit|minecraft_explosion|minecraft_bell";
+            string[] instruments = referenceSeq.Split('|');
+
+            return (ItemType)instruments.ToList().FindIndex(i => i == item);
         }
 
         public static string GetModifier(ControlModifier mod)
