@@ -45,7 +45,7 @@ You can also parse a compiled sequence back into a Sequence object like so:
 using ThirtyDollarLib;
 
 string compiled = File.ReadAllText("sequence.🗿"); // you can load the string in any way you'd like, we're only using files as an example
-Sequence seq = Sequence.Parse();
+Sequence seq = Sequence.Parse(compiled);
 
 // do stuff with your new Sequence, like appending data
 ```
