@@ -5,22 +5,19 @@ DON'T YOU LECTURE ME WITH YOUR THIRTY DOLLAR LIBRARY, or ThirtyDollarLib for sho
 ## READ!! Info regarding ItemType
 When programming the sounds, you might not be able to distinguish the control items and the actual sounds.
 To distinguish the 2, here is a list of control items to help out:
-<details>
-  <summary>List</summary>
-  Speed,
-  Volume,
-  Stop,
-  LoopMany,
-  Loop,
-  LoopTarget,
-  Cut,
-  Combine,
-  Jump,
-  Target,
-  Flash,
-  StartPos,
-  Pause
-</details>
+Speed,
+Volume,
+Stop,
+LoopMany,
+Loop,
+LoopTarget,
+Cut,
+Combine,
+Jump,
+Target,
+Flash,
+StartPos,
+Pause
 
 ## Installation
 Like almost any other .NET library out there, the library is provided through NuGet.
