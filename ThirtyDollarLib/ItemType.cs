@@ -37,6 +37,7 @@ namespace ThirtyDollarLib
         Boing,
         Fard,
         WindowsXPError,
+        SamsungNotification,
         SamsungAlarm,
         Bonk,
         Censored,
