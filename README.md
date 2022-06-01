@@ -1,6 +1,6 @@
 
 # <p align="center"><img src="https://user-images.githubusercontent.com/42378704/170884149-7e2f5c9f-91c8-488b-9fa3-b5beaa521a70.png" alt="Logo" width="128" align="center"/> <br/>![GitHub issues](https://img.shields.io/github/issues/4techguns/ThirtyDollarLib) ![GitHub](https://img.shields.io/github/license/4techguns/ThirtyDollarLib) ![Nuget](https://img.shields.io/nuget/dt/ThirtyDollarLib)<br/> DON'T YOU LECTURE ME WITH YOUR THIRTY DOLLAR LIBRARY</p>
-DON'T YOU LECTURE ME WITH YOUR THIRTY DOLLAR LIBRARY, or ThirtyDollarLib for short, is a .NET library that helps construct and parse 🗿 files, or better known as [Thirty Dollar Website](https://gdcolon.com/🗿) sequencer files.
+DON'T YOU LECTURE ME WITH YOUR THIRTY DOLLAR LIBRARY, or ThirtyDollarLib for short, is a .NET library that helps construct and parse 🗿 files, or better known as [Thirty Dollar Website](https://thirtydollar.website) sequencer files.
 
 ## READ!! Info regarding ItemType
 When programming the sounds, you might not be able to distinguish the control items and the actual sounds.
