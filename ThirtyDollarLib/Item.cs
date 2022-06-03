@@ -14,26 +14,32 @@ namespace ThirtyDollarLib
         public ItemType Type { get; set; }
         public float Pitch { get; set; }
         public ControlModifier Modifier { get; set; }
+        public int? RepeatCount { get; set; }
 
         public Item(ItemType type)
         {
             Type = type;
             Pitch = 0;
             Modifier = ControlModifier.None;
+            RepeatCount = null;
         }
 
-        public Item(ItemType type, float pitch)
+        public Item(ItemType type, float pitch) : this(type)
         {
-            Type = type;
             Pitch = pitch;
             Modifier = ControlModifier.None;
+            RepeatCount = null;
         }
 
-        public Item(ItemType type, float pitch, ControlModifier modifier)
+        public Item(ItemType type, float pitch, ControlModifier modifier) : this(type, pitch)
         {
-            Type = type;
-            Pitch = pitch;
             Modifier = modifier;
+            RepeatCount = null;
+        }
+
+        public Item(ItemType type, float pitch, ControlModifier modifier, int? repeatCount) : this(type, pitch, modifier)
+        {
+            RepeatCount = repeatCount;
         }
     }
 }

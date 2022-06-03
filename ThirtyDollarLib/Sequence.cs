@@ -36,7 +36,7 @@ namespace ThirtyDollarLib
             if (_sequenceStr != null) return _sequenceStr;
             else return string.Join('|', 
                 Items.Select(i => 
-                    $"{ItemConverter.ConvertItem(i.Type)}@{i.Pitch}{ItemConverter.GetModifier(i.Modifier)}"
+                    $"{ItemConverter.ConvertItem(i.Type)}{((i.RepeatCount != null) ? $"={i.RepeatCount}" : "")}@{i.Pitch}{ItemConverter.GetModifier(i.Modifier)}"
                 )
             );
         }
