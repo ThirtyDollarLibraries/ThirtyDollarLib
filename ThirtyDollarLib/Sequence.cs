@@ -36,7 +36,7 @@ namespace ThirtyDollarLib
             if (_sequenceStr != null) return _sequenceStr;
             else return string.Join('|', 
                 Items.Select(i => 
-                    $"{ItemConverter.ConvertItem(i.Type)}{((i.RepeatCount != null) ? $"={i.RepeatCount}" : "")}@{i.Pitch}{ItemConverter.GetModifier(i.Modifier)}"
+                    $"{ItemConverter.ConvertItem(i.Type)}@{i.Pitch}{ItemConverter.GetModifier(i.Modifier)}{((i.RepeatCount != null) ? $"={i.RepeatCount}" : "")}"
                 )
             );
         }
@@ -48,20 +48,33 @@ namespace ThirtyDollarLib
         /// <returns>A new <see cref="Sequence"/> constructed from the data</returns>
         public static Sequence Parse(string sequenceString)
         {
-            List<Item> items = new();
-            List<string> rawItems = sequenceString.Split('|').ToList();
+            Sequence seq = new Sequence(new List<Item>());
+            string[] items = sequenceString.Split('|');
 
-            for (int i = 0; i < rawItems.Count; i++)
+            foreach (string i in items)
             {
-                string[] splitted = rawItems[i].Split('@');
+                string[] equals = i.Split('=');
 
-                if (splitted.Length == 0) items.Add(new Item(ItemConverter.FromItem(rawItems[i])));
-                else if (splitted.Length == 2) items.Add(new Item(ItemConverter.FromItem(splitted[0]), int.Parse(splitted[1])));
-                else if (splitted.Length == 3) items.Add(new Item(ItemConverter.FromItem(splitted[0]), int.Parse(splitted[1]), ItemConverter.FromStringModifier(splitted[2])));
+                string[] sections;
 
+                if (equals.Length > 0) sections = equals[0].Split('@');
+                else sections = i.Split('@');
+
+                switch (sections.Length)
+                {
+                    case 1:
+                        seq.Items.Add(new Item(ItemConverter.FromItem(sections[0]), 0, ControlModifier.None, (equals.Length > 1) ? int.Parse(equals[1]) : null));
+                        break;
+                    case 2:
+                        seq.Items.Add(new Item(ItemConverter.FromItem(sections[0]), float.Parse(sections[1]), ControlModifier.None, (equals.Length > 1) ? int.Parse(equals[1]) : null));
+                        break;
+                    case 3:
+                        seq.Items.Add(new Item(ItemConverter.FromItem(sections[0]), float.Parse(sections[1]), ItemConverter.FromStringModifier(sections[2]), (equals.Length > 1) ? int.Parse(equals[1]) : null));
+                        break;
+                }
             }
 
-            return new Sequence(items);
+            return seq;
         }
     }
 }

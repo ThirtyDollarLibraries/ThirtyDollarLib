@@ -9,7 +9,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/4techguns/ThirtyDollarLib</RepositoryUrl>
     <PackageIcon>thirtydollarlib.png</PackageIcon>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <Description>DON'T YOU LECTURE ME WITH YOUR THIRTY DOLLAR LIBRARY, or ThirtyDollarLib for short, is a .NET library that helps construct and parse 🗿 files, or better known as https://thirtydollar.website sequencer files.</Description>
     <PackageLicenseExpression>GPL-2.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>

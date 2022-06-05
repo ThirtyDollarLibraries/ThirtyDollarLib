@@ -22,7 +22,7 @@
             string result = seq.ToString();
             Sequence seqP = Sequence.Parse(result);
 
-            string result2 = seq.ToString();
+            string result2 = seqP.ToString();
             Assert.AreEqual("boom@0|👏@0", result2);
         }
 
@@ -33,7 +33,19 @@
             Sequence seq = new(items);
 
             string result = seq.ToString();
-            Assert.AreEqual("boom=10@0|👏=10@0", result);
+            Assert.AreEqual("boom@0=10|👏@0=10", result);
+        }
+
+        [TestMethod]
+        public void RepeatCountParseBack()
+        {
+            List<Item> items = new() { new Item(ItemType.Boom, 0, ControlModifier.None, 10), new Item(ItemType.Clap, 0, ControlModifier.None, 10) };
+            Sequence seq = new(items);
+
+            string result = seq.ToString();
+            Sequence seqP = Sequence.Parse(result);
+
+            Assert.AreEqual(10, seqP.Items[0].RepeatCount);
         }
     }
 }

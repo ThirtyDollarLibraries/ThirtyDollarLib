@@ -116,7 +116,7 @@ namespace ThirtyDollarLib
         RoomsTab,
         Preecho,
         Tonk,
-        RDMIStake,
+        RD_Mistake,
         Samurai,
         ADOFAIKick,
         Midspin,
