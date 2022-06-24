@@ -26,44 +26,69 @@ def to_thirtyDollarWebsite(midi,insts=["noteblock_harp"]*16,bases=[64]*16,vmap =
     msgs = (msg for msg in midi if not msg.is_meta)
     vals = {"control":[[0 for i in range(128)] for j in range(16)],"pitch":[0 for i in range(16)]}
     time_error = 0
-    current_speed = base_speed #speed takes effect next, so have to hoist all the speeds up 1 note
+    current_speed = base_speed #speed takes effect next, so have to hoist all the speeds up 1 note                                       
     pvol = 1
-    yield f"!speed@{current_speed}" #ima do everything multiplicatively on later speeds to ease shenanigans
+    yield f"!speed@{current_speed}" #ima do everything multiplicatively on later speeds to ease shenanigans                              
     pnote = None
+    overflow = dict()
     for msg in msgs:
-        time_error += msg.time
-        #do message
+        time_error += msg.time #the time until the note starts, controled by the previous note's tempo                                   
+        #do message                                                                                                                      
         if msg.type == "note_off":
             pass
         elif msg.type == "note_on":
             if msg.channel == 9 and percuss is not None:
                 inst = percuss
             else:
-                inst = insts[msg.channel%len(insts)] 
+                inst = insts[msg.channel%len(insts)]
             note = msg.note-bases[msg.channel%len(insts)]
             if type(inst) is not str:
-                inst = inst[note]
-                if type(inst) is tuple: #allow changing of note from inst funcs
+                try:
+                    inst = inst[note]
+                except KeyError:
+                    inst = "_pause"
+                if type(inst) is tuple: #allow changing of note from inst funcs                                                          
                     inst,note = inst
             vol = vmap(msg.velocity)
-            #bpm is clamped to [10,10000]
+            #bpm is clamped to [10,10000]                                                                                                
             bpe = min(10000,60/time_error) if time_error > 0 else 10000
-            n = 1
-            if bpe < 10:
-                n = math.ceil(10/bpe)
-                bpe *= n
-            if bpe!=current_speed:
-                yield f"!speed@{bpe/current_speed}@x"
-            current_speed = bpe
-            if n > 1:
-                yield f"!stop@{n}"
-            if pnote is not None:
-                yield pnote
-            pnote = f"{inst}@{note}"
-            if pvol != vol:
-                yield f"!volume@{vol*100}"
-            pvol = vol
-            time_error -= n*60/bpe
+            if time_error <= 0:
+                if vol in overflow:
+                    overflow[vol] += [(inst,note)]
+                else:
+                    time_error -= 60/10000
+                    overflow[vol] = [(inst,note)]
+            else:
+                if len(overflow):
+                    for vol in overflow:
+                        if current_speed != 10000:
+                            yield f"!speed@{10000/current_speed}@x"
+                            current_speed = 10000
+                        if pnote is not None:
+                            yield pnote
+                        pnote = "|!combine|".join(f"{inst_}@{note_}" for inst_,note_ in overflow[vol])
+                        if pvol != vol:
+                            yield f"!volume@{vol*100}"
+                        elif pnote is not None:
+                            pass#pnote_ = pnote+"|!combine|"+pnote_                                                                      
+                        pvol = vol
+                    overflow = dict()
+                n = 1
+                if bpe < 10:
+                    n = math.ceil(10/bpe)
+                    bpe *= n
+                if bpe!=current_speed:
+                    yield f"!speed@{bpe/current_speed}@x"
+                    current_speed = bpe
+                if n > 1:
+                    yield f"!stop@{n}"
+                if pnote is not None:
+                    yield pnote
+                pnote = f"{inst}@{note}"
+                if pvol != vol:
+                    yield f"!volume@{vol*100}"
+                pvol = vol
+                time_error -= n*60/bpe
         elif msg.type == "polytouch":
             pass
         elif msg.type == "control_change":
@@ -84,6 +109,8 @@ def to_thirtyDollarWebsite(midi,insts=["noteblock_harp"]*16,bases=[64]*16,vmap =
             pass
     if pnote is not None:
         yield pnote
+
+
 
 
 #use:
